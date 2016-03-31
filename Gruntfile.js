@@ -71,11 +71,21 @@ module.exports = function(grunt) {
       }
     },
 
+
+
+  // server tasks
+  // npm install
+  // npm -g grunt-cli
+  // grunt test
     shell: {
       prodServer: {
-        dirList: {
-          command: 'ls'
-        }
+        options: {
+          stderr: true // 3 std options
+        },
+        // target: {
+        //     command: 'ls'
+        // }
+        command: 'git push live master'
       }
     },
   });
@@ -110,15 +120,10 @@ module.exports = function(grunt) {
   grunt.registerTask('build', ['concat', 'uglify', 'cssmin']);
   grunt.registerTask('test', ['lint', 'build', 'mochaTest']);
 
-  // server tasks
-  // npm install
-  // npm -g grunt-cli
-  // grunt test
-
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
       // add your production server task here
-      grunt.task.run(['shell']);
+      grunt.task.run(['shell:prodServer']);
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
