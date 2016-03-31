@@ -41,6 +41,8 @@ module.exports = function(grunt) {
     eslint: {
       target: [
         // Add list of files to lint here
+        'app/**/*.js',
+        'public/client/**/*.js'
       ]
     },
 
@@ -109,11 +111,9 @@ module.exports = function(grunt) {
   // Main grunt tasks
   ////////////////////////////////////////////////////
 
-  grunt.registerTask('test', [
-    'mochaTest'
-  ]);
-
+  grunt.registerTask('lint', ['eslint']);
   grunt.registerTask('build', ['concat', 'uglify']);
+  grunt.registerTask('test', ['lint', 'build', 'mochaTest']);
 
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
