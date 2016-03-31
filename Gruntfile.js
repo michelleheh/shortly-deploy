@@ -99,6 +99,11 @@ module.exports = function(grunt) {
     grunt.task.run([ 'watch' ]);
   });
 
+// server tasks
+// npm install
+// npm -g grunt-cli
+// grunt test
+//
 
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
@@ -125,6 +130,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
+    'test', 'upload'
   ]);
 
 };
