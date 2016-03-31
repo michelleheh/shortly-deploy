@@ -71,20 +71,11 @@ module.exports = function(grunt) {
       }
     },
 
-
-
-  // server tasks
-  // npm install
-  // npm -g grunt-cli
-  // grunt test
     shell: {
       prodServer: {
         options: {
           stderr: true // 3 std options
         },
-        // target: {
-        //     command: 'ls'
-        // }
         command: 'git push live master'
       }
     },
